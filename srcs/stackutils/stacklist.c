@@ -6,11 +6,11 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 07:52:45 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/21 20:15:48 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/21 23:29:36 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 t_stacklist	*ft_stacknew(int content)
 {

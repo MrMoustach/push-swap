@@ -6,11 +6,11 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/21 23:23:10 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/21 23:29:30 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 t_stack    pop(t_stack stack)
 {
