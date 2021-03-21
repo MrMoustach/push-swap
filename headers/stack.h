@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 11:35:47 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/21 20:22:09 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/21 23:23:32 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ t_stack             push(t_stack stack, int value);
 void                push_to(t_stack *stack, t_stack *stack2);
 t_stack                swap(t_stack stack);
 t_stack                rotate(t_stack stack);
+t_stack     reverse_rotate(t_stack stack);
 #endif

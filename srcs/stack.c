@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/21 20:31:48 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/21 23:23:10 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,20 @@ t_stack    rotate(t_stack stack)
    ft_stacklast(stack.list)->next = tmp;
    tmp->next = NULL;
    return (stack);
+}
+
+t_stack     reverse_rotate(t_stack stack)
+{
+    t_stacklist *tmp;
+    t_stacklist *second_to_last;
+
+    second_to_last = stack.list;
+    while (second_to_last->next->next)
+        second_to_last = second_to_last->next;
+    tmp = ft_stacklast(stack.list);
+    second_to_last->next = NULL;
+    ft_stackadd_front(&(stack.list), tmp);
+    return (stack);
 }
 
 void    printstack(t_stack stack)
