@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 11:35:47 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/19 09:10:01 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/21 20:22:09 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,9 @@ void			    ft_stackadd_back(t_stacklist **alst, t_stacklist *new);
 void			    ft_stackdelone(t_stacklist *lst);
 void			    ft_lstacklear(t_stacklist **lst);
 int			        ft_stackisempty(t_stack stack);
+t_stack                pop(t_stack stack);
+t_stack             push(t_stack stack, int value);
+void                push_to(t_stack *stack, t_stack *stack2);
+t_stack                swap(t_stack stack);
+t_stack                rotate(t_stack stack);
 #endif

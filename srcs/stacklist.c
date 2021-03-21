@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 07:52:45 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/19 09:09:51 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/21 20:15:48 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ void	ft_ststackadd_back(t_stacklist **alst, t_stacklist *new)
 
 void	ft_stackadd_front(t_stacklist **alst, t_stacklist *new)
 {
-	if (new && alst)
+	if (new )
 	{
-		if (alst != NULL)
-			new->next = alst[0];
+		if (*alst != NULL)
+			new->next = *alst;
 		else
 			new->next = NULL;
-		alst[0] = new;
+		*alst = new;
 	}
 }
 
 void	ft_stackclear(t_stacklist **lst)
 {
-	t_list *tmp;
+	t_stacklist *tmp;
 
 	if (lst)
 	{
