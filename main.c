@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 17:03:53 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/21 23:27:39 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/25 12:42:44 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,14 @@ int main(int ac, char *av[])
         i++;
     }
     
-    a = swap(a);
-    push_to(&a, &b);
-    push_to(&a, &b);
-    push_to(&a, &b);
-    a = rotate(a);
-    b = rotate(b);
-    a = reverse_rotate(a);
-    b = reverse_rotate(b);
-    a = swap(a);
-    push_to(&b, &a);
-    push_to(&b, &a);
-    push_to(&b, &a);
-    printstack(a);
+    b.list = NULL;
+    while (!ft_stackisempty(a))
+    {
+        i = a.list->value;
+        a = pop(a);
+        while (!ft_stackisempty(b) && b.list->value < i)
+            push_to(&b, &a);
+        b = push(b, i);
+    }
+    printstack(b);
 }
