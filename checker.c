@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/20 17:03:53 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/29 10:05:09 by iharchi          ###   ########.fr       */
+/*   Created: 2021/03/29 10:21:06 by iharchi           #+#    #+#             */
+/*   Updated: 2021/03/29 11:30:17 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 int main(int ac, char *av[])
 {
-    int array[] = {8,5,6,3,1,2,0};
+    int i;
     t_stack a;
     t_stack b;
-    int i;
-
+    int flag;
+    if (ac < 2)
+    {
+        write (2, "error\nPlease include a stack in the args", 41);
+        return (-1);
+    }
     i = 0;
     a.list = NULL;
-    while (array[i])
+    b.list = NULL;
+    flag = 0;
+    while (av[i])
     {
-        a = push(a, array[i]);
+        if (ft_is_number(av[i]))
+        {
+            flag = 1;
+            break ;
+        }
+        a = push(a, ft_atoi(av[i]));
         i++;
     }
-    
-    b.list = NULL;
-    while (!ft_stackisempty(a))
-    {
-        i = a.list->value;
-        a = pop(a);
-        while (!ft_stackisempty(b) && b.list->value < i) 
-            push_to(&b, &a);
-        b = push(b, i);
-    }
-    printstack(b);
+    printstack(a);
 }

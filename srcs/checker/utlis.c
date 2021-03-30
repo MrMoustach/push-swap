@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utlis.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 11:36:40 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/29 11:29:02 by iharchi          ###   ########.fr       */
+/*   Created: 2021/03/29 11:25:01 by iharchi           #+#    #+#             */
+/*   Updated: 2021/03/29 11:42:34 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../libft/libft.h"
-#include "../gnl/get_next_line.h"
-# include "stack.h"
-# include "dev.h"
+#include "../../headers/push_swap.h"
 
-int ft_is_number(char *s);
-#endif
+int ft_is_number(char *s)
+{
+    int i;
+    if (!s)
+        return (0);
+    i = 0;
+    while (s[i])
+    {
+        if (!ft_isdigit(s[i]))
+            return (0);
+            i++;
+    }
+    return (1);
+}
