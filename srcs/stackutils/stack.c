@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/25 12:28:49 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/30 11:22:21 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ t_stack    rotate(t_stack stack)
 {
    t_stacklist *tmp;
 
+   if (stack.list == NULL)
+        return (stack);
    tmp = stack.list;
    stack.list = stack.list->next;
    ft_stacklast(stack.list)->next = tmp;
@@ -94,4 +96,32 @@ void    printstack(t_stack stack)
         printf("%d\n", list->value);
         list = list->next;
     }
+}
+
+void    printstacks(t_stack a, t_stack b)
+{
+    t_stacklist *list1;
+    t_stacklist *list2;
+
+    list1 = a.list;
+    list2 = b.list;
+    while (list1 || list2)
+    {
+        if (list1)
+        {   
+            printf("%d ", list1->value);
+            list1 = list1->next;
+        }
+        else
+            printf("  ");
+        if (list2)
+        {   
+            printf("%d ", list2->value);
+            list2 = list2->next;
+        }
+        else
+            printf("  ");
+        printf("\n");
+    }
+    printf("-------\na b\n");
 }

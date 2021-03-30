@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 07:52:45 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/21 23:29:36 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/03/30 11:14:15 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,17 @@ t_stacklist	*ft_stacklast(t_stacklist *lst)
 int			ft_stackisempty(t_stack stack)
 {
 	return (stack.list == NULL);
+}
+int			ft_is_stack_sorted(t_stack stack)
+{
+	t_stacklist	*tmp;
+	
+	tmp = stack.list;
+	while (tmp->next)
+	{
+		if (tmp->value > tmp->next->value)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
