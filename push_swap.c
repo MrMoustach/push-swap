@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:07:24 by iharchi           #+#    #+#             */
-/*   Updated: 2021/04/22 14:11:34 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/22 16:57:35 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_stack load_stack(char *av[], int *flag)
         a = push(a, ft_atoi(av[i]));
         i++;
     }
+    a.count = --i;
     return (a);
 }
 
@@ -45,5 +46,7 @@ int main(int ac, char *av[])
 		return (0);
 	}
 	a = load_stack(av, &flag);
+	printstacks(a, b);
+    a = ft_sort(a);
 	printstacks(a, b);
 }
