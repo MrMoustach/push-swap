@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 19:29:47 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/22 04:43:06 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/22 18:34:54 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static	int	findset(char c, char const *set)
 
 char		*ft_strtrim(char const *s1, char const *set)
 {
-	int		setlen;
 	int		slen;
 	int		srt;
 	int		end;
@@ -35,7 +34,6 @@ char		*ft_strtrim(char const *s1, char const *set)
 	end = 0;
 	if (!s1 || !set)
 		return (NULL);
-	setlen = ft_strlen(set);
 	slen = ft_strlen(s1);
 	while (findset(s1[srt], set))
 		srt++;

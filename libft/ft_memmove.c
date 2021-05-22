@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iharchi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 19:33:47 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/11 16:34:36 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/22 18:32:48 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	tmp1 = dst;
 	tmp2 = src;
-	if (tmp1 == '\0' && tmp2 == '\0')
+	if (*tmp1 == '\0' && *tmp2 == '\0')
 		return (NULL);
 	if (ft_memcmp(tmp1, tmp2, len) == 0)
 		return (dst);

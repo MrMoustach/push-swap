@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/04/22 14:12:44 by iharchi          ###   ########.fr        #
+#    Updated: 2021/05/22 18:35:36 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FLAG = -Wall -Werror -Wextra
 ch: 
 		@gcc checker.c -g $(CH_SRC) $(SRC_UTILS) $(GNL) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
 ps:
-		@gcc push_swap.c -g $(PS_SRC) $(SRC_UTILS) $(LIBFT) -o $(PS)
+		@gcc push_swap.c -g $(SRC_UTILS) $(PS_SRC) $(LIBFT)  -o $(PS)
 all: $(NAME)
 $(NAME) : 
 			@gcc $(SRC) $(GNL) $(FLAG)
