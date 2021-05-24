@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 11:35:47 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/30 11:22:37 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/24 11:08:35 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ t_stack                rotate(t_stack stack);
 t_stack     reverse_rotate(t_stack stack);
 int			ft_is_stack_sorted(t_stack stack);
 void    printstacks(t_stack a, t_stack b);
+t_stack     copy_stack(t_stack stack);
 #endif

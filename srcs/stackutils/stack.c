@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/22 18:57:41 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/24 16:09:56 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_stack    pop(t_stack stack)
     tmp = stack.list->next;
     free(stack.list);
     stack.list = tmp;
+    stack.count--;
     return (stack);
 }
 
@@ -124,4 +125,19 @@ void    printstacks(t_stack a, t_stack b)
         printf("\n");
     }
     printf("-------\na b\n");
+}
+
+t_stack     copy_stack(t_stack stack)
+{
+    t_stacklist *tmp;
+    t_stack ret;
+
+    tmp = stack.list;
+    ret.list = NULL;
+    while (tmp)
+    {
+        ft_lstadd_back(&ret.list, ft_lstnew(tmp->value));
+        tmp = tmp->next;
+    }
+    return (ret);
 }

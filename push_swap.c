@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:07:24 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/22 19:01:57 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/24 14:48:00 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int ac, char *av[])
 		return (0);
 	}
 	a = load_stack(av, &flag);
-	printstacks(a, b);
-    a = ft_sort(a);
-	printstacks(a, b);
+	// printstacks(a, b);
+    a = ft_sort(a, b);
+	// printstacks(a, b);
 }
