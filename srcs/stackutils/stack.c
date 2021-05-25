@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/24 16:09:56 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/25 10:11:16 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ t_stack     copy_stack(t_stack stack)
     ret.list = NULL;
     while (tmp)
     {
-        ft_lstadd_back(&ret.list, ft_lstnew(tmp->value));
+        ft_stackadd_back(&ret.list, ft_stacknew(tmp->value));
         tmp = tmp->next;
     }
     return (ret);

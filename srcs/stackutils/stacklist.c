@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 07:52:45 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/24 09:45:27 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/25 10:10:54 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stacklist	*ft_stacknew(int content)
 	return (ret);
 }
 
-void	ft_ststackadd_back(t_stacklist **alst, t_stacklist *new)
+void	ft_stackadd_back(t_stacklist **alst, t_stacklist *new)
 {
 	t_stacklist *tmp;
 
