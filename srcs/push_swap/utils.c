@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/24 16:03:12 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/26 17:33:35 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,103 @@ t_stack ft_sort_all(t_stack stack, t_stack stackb)
     return (stack);
 }
 
+int     ft_get_median(t_stack stack)
+{
+    int min;
+    int max;
+    int average;
+    t_stacklist *tmp;
+    
+    min = get_max(stack);
+    max = get_min(stack);
+    average = get_average(stack);
+    tmp = stack.list;
+    while (tmp)
+    {
+        if (tmp->value == average)
+            return (tmp->value);
+        if (tmp->value < min && tmp->value > average)
+            min = tmp->value;
+        if (tmp->value > max && tmp->value < average)
+            max = tmp->value;
+        tmp = tmp->next;
+    }
+    if (average - min < max - average)
+        return (min);
+    else
+        return (max);
+}
+
+int     ft_under_median(t_stack stack, int median)
+{
+    t_stacklist *tmp;
+    int         i;
+
+    tmp = stack.list;
+    i = 0;
+    while (tmp)
+    {
+        if (tmp->value < median)
+            return (i);
+        i++;
+        tmp = tmp->next;
+    }
+    return (-1);
+}
+
+t_stack ft_get_to_top(t_stack stack, int pos, char a)
+{
+    if (stack.count / 2 < pos)
+    {
+        while(pos--)
+        {
+            stack = rotate(stack);
+            if (a == 'a')
+                write (1, "ra\n", 3);
+            else
+                write (1, "rb\n", 3);
+        }
+    }
+    else
+    {
+        while (pos++ < stack.count)
+        {
+            stack = reverse_rotate(stack);
+            if (a == 'a')
+                write (1, "rra\n", 4);
+            else
+                write (1, "rrb\n", 4);
+        }
+    }
+    return (stack);
+}
+
+t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
+{
+    t_stacklist *tmp;
+    int         median;
+    int         pos;
+    int         top;
+
+    tmp = stack.list;
+    median = ft_get_median(stack);
+    pos = ft_under_median(stack, median);
+    while (pos >= 0)
+    {
+        stack = ft_get_to_top(stack, pos, 'a');
+        write(1, "pb\n", 3);
+        top = stackb.list->value;
+        push_to(&stack, &stackb);
+        if (top < stackb.list->value)
+        {
+            stackb = rotate(stackb);
+            write (1, "rb\n", 3);
+        }
+        pos = ft_under_median(stack, median);
+    }
+    return (stack);
+}
+
 t_stack ft_sort(t_stack stack, t_stack stackb)
 {
     if (ft_is_stack_sorted(stack))
@@ -161,6 +258,6 @@ t_stack ft_sort(t_stack stack, t_stack stackb)
     if (stack.count <= 5)
         return (ft_sort_five(stack, stackb));
     else
-        return (ft_sort_all(stack, stackb));
+        return (ft_sort_all_median(stack, stackb));
     return (stack);
 }
