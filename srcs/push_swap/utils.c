@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/27 15:47:52 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/27 19:42:08 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_stack put_lowest_top(t_stack stack)
     }
     return (stack);
 }
-
+// TODO : change to highest 2 to b
 t_stack ft_sort_five(t_stack stack, t_stack stackb)
 {
     stackb.count = 0;
