@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/26 17:33:35 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/27 15:47:52 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,14 @@ t_stack ft_sort_three(t_stack stack)
         tmp = reverse_rotate(tmp);
         if (ft_is_stack_sorted(tmp))
         {
+            
             stack = tmp;
             write (1, "rra\n", 4);
         }
         else
         {
+            stack = swap(stack);
+            write (1, "sa\n", 3);
             stack = reverse_rotate(stack);
             write (1, "rra\n", 4);
         }
@@ -122,6 +125,7 @@ t_stack put_lowest_top(t_stack stack)
 
 t_stack ft_sort_five(t_stack stack, t_stack stackb)
 {
+    stackb.count = 0;
     while (stack.count != 3)
     {
         stack = put_lowest_top(stack);
@@ -198,9 +202,28 @@ int     ft_under_median(t_stack stack, int median)
     return (-1);
 }
 
+int     ft_above_median(t_stack stack, int median)
+{
+    t_stacklist *tmp;
+    int         i;
+
+    tmp = stack.list;
+    i = 0;
+    while (tmp)
+    {
+        if (tmp->value >= median)
+            return (i);
+        i++;
+        tmp = tmp->next;
+    }
+    return (-1);
+}
+
 t_stack ft_get_to_top(t_stack stack, int pos, char a)
 {
-    if (stack.count / 2 < pos)
+    if (stack.count <= 1)
+        return (stack);
+    if (stack.count / 2 > pos)
     {
         while(pos--)
         {
@@ -233,20 +256,55 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
     int         top;
 
     tmp = stack.list;
+    stackb.count = 0;
     median = ft_get_median(stack);
     pos = ft_under_median(stack, median);
     while (pos >= 0)
     {
         stack = ft_get_to_top(stack, pos, 'a');
         write(1, "pb\n", 3);
-        top = stackb.list->value;
+        if (stackb.count > 0)
+            top = stackb.list->value;
         push_to(&stack, &stackb);
-        if (top < stackb.list->value)
+        if (top < stackb.list->value && stackb.count > 1)
         {
             stackb = rotate(stackb);
             write (1, "rb\n", 3);
         }
         pos = ft_under_median(stack, median);
+    }
+    while (stackb.count)
+    {
+        pos = ft_get_smallest_pos(stackb);
+        stackb = ft_get_to_top(stackb, pos, 'b');
+        push_to(&stackb, &stack);
+        write(1, "pa\n", 3);
+        stack = rotate(stack);
+        write(1, "ra\n", 3);
+    }
+    pos = ft_above_median(stack, median);
+    while (pos >= 0)
+    {
+        stack = ft_get_to_top(stack, pos, 'a');
+        write(1, "pb\n", 3);
+        if (stackb.count > 0)
+            top = stackb.list->value;
+        push_to(&stack, &stackb);
+        if (top < stackb.list->value && stackb.count > 1)
+        {
+            stackb = rotate(stackb);
+            write (1, "rb\n", 3);
+        }
+        pos = ft_above_median(stack, median);
+    }
+    while (stackb.count)
+    {
+        pos = ft_get_smallest_pos(stackb);
+        stackb = ft_get_to_top(stackb, pos, 'b');
+        push_to(&stackb, &stack);
+        write(1, "pa\n", 3);
+        stack = rotate(stack);
+        write(1, "ra\n", 3);
     }
     return (stack);
 }
