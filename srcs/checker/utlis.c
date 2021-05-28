@@ -6,23 +6,8 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 11:25:01 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/29 11:42:34 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/28 12:30:06 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
-
-int ft_is_number(char *s)
-{
-    int i;
-    if (!s)
-        return (0);
-    i = 0;
-    while (s[i])
-    {
-        if (!ft_isdigit(s[i]))
-            return (0);
-            i++;
-    }
-    return (1);
-}

@@ -6,34 +6,11 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 10:21:06 by iharchi           #+#    #+#             */
-/*   Updated: 2021/03/30 11:22:51 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/28 12:30:17 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/push_swap.h"
-
-t_stack load_stack(char *av[], int *flag)
-{
-    t_stack a;
-    int     i;
-
-    a.list = NULL;
-    *flag = 0;
-    i = 1;
-    while (av[i])
-    {
-        if (!ft_is_number(av[i]))
-        {
-            *flag = 1;
-            break ;
-        }
-        a = push(a, ft_atoi(av[i]));
-        i++;
-    }
-    return (a);
-}
-
-
 
 int main(int ac, char *av[])
 {
@@ -48,7 +25,7 @@ int main(int ac, char *av[])
         write (2, "error\nPlease include a stack in the args", 41);
         return (-1);
     }
-    a = load_stack(av, &flag);
+    a = load_stack(av, ac, &flag);
     line = NULL;
     int fd = open("test", O_RDONLY);
     while (1)
@@ -89,7 +66,7 @@ int main(int ac, char *av[])
         if (*line == '\0')
             break ;
     }
-    if (ft_is_stack_sorted(a))
+    if (ft_is_stack_sorted(a) && b.count == 0)
         printf("OK\n");
     else
         printf("KO\n");

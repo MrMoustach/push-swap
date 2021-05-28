@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/05/22 18:35:36 by iharchi          ###   ########.fr        #
+#    Updated: 2021/05/28 12:31:26 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,14 @@ PS = push_swap
 SRC_UTILS = srcs/stackutils/*.c
 CH_SRC = srcs/checker/*.c
 PS_SRC = srcs/push_swap/*.c
+SRC = srcs/*.c
 GNL = gnl/*.c 
 LIBFT = libft/libft.a
 FLAG = -Wall -Werror -Wextra
 ch: 
-		@gcc checker.c -g $(CH_SRC) $(SRC_UTILS) $(GNL) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
+		@gcc checker.c -g $(CH_SRC) $(SRC_UTILS) $(SRC) $(GNL) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
 ps:
-		@gcc push_swap.c -g $(SRC_UTILS) $(PS_SRC) $(LIBFT)  -o $(PS)
+		@gcc push_swap.c -g $(SRC_UTILS) $(PS_SRC) $(SRC) $(LIBFT)  -o $(PS)
 all: $(NAME)
 $(NAME) : 
 			@gcc $(SRC) $(GNL) $(FLAG)

@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/26 16:28:11 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/28 14:53:08 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ int     get_max(t_stack stack)
     return (max);
 }
 
-int     get_average(t_stack stack)
+int     get_average(t_stack stack, int min, int max)
 {
     int     average;
     t_stacklist *tmp;
@@ -183,7 +183,8 @@ int     get_average(t_stack stack)
     average = 0;
     while (tmp)
     {
-        average += tmp->value;
+        if (tmp->value >= min && tmp->value <= max)
+            average += tmp->value;
         tmp = tmp->next;
     }
     average = (int)((float)average / (float) stack.count);
