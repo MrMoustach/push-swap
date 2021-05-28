@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 10:21:06 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/28 12:30:17 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/28 16:17:11 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int ac, char *av[])
     a = load_stack(av, ac, &flag);
     line = NULL;
     int fd = open("test", O_RDONLY);
+    b.count = 0;
     while (1)
     {
         printstacks(a, b);

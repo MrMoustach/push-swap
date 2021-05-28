@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/28 14:54:10 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/28 16:31:52 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,16 +174,40 @@ int     ft_get_median(t_stack stack, int min, int max)
 int     ft_under_median(t_stack stack, int median, int min)
 {
     t_stacklist *tmp;
+    int         top;
+    int         bot;
     int         i;
+    int         flag;
 
     tmp = stack.list;
+    top = 0;
+    bot = 0;
     i = 0;
+    flag = 0;
     while (tmp)
     {
-        if (tmp->value < median && tmp->value > min)
-            return (i);
+        if (tmp->value < median && tmp->value >= min)
+        {
+            flag = 1;
+            break ;
+        }
+        top++;
+        tmp = tmp->next;
+    }
+    tmp = stack.list;
+    while (tmp)
+    {
+        if (tmp->value < median && tmp->value >= min)
+            bot = i;
         i++;
         tmp = tmp->next;
+    }
+    if (flag)
+    {
+        if (top < stack.count - bot)
+            return (top);
+        else
+            return (bot);
     }
     return (-1);
 }
@@ -191,16 +215,40 @@ int     ft_under_median(t_stack stack, int median, int min)
 int     ft_above_median(t_stack stack, int median, int max)
 {
     t_stacklist *tmp;
+    int         top;
+    int         bot;
     int         i;
+    int         flag;
 
     tmp = stack.list;
+    top = 0;
+    bot = 0;
     i = 0;
+    flag = 0;
     while (tmp)
     {
-        if (tmp->value >= median && tmp->value <= max)
-            return (i);
+        if (tmp->value >= median && tmp->value >= max)
+        {
+            flag = 1;
+            break ;
+        }
+        top++;
+        tmp = tmp->next;
+    }
+    tmp = stack.list;
+    while (tmp)
+    {
+        if (tmp->value < median && tmp->value >= max)
+            bot = i;
         i++;
         tmp = tmp->next;
+    }
+    if (flag)
+    {
+        if (top < stack.count - bot)
+            return (top);
+        else
+            return (bot);
     }
     return (-1);
 }
@@ -284,6 +332,7 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
 
     stack = ft_sort_part(stack, stackb, ft_under_median, median[2],median[0]);
     stack = ft_sort_part(stack, stackb, ft_above_median, median[2], get_max(stack));
+    printf("center median :%d left median : %d right median : %d", median[0], median[1], median[2]);
     return (stack);
 }
 

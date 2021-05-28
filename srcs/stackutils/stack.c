@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/28 14:53:08 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/28 15:50:40 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,22 @@ void    printstacks(t_stack a, t_stack b)
 {
     t_stacklist *list1;
     t_stacklist *list2;
+    int         last;
 
     list1 = a.list;
     list2 = b.list;
+    last = list1->value;
     while (list1 || list2)
     {
         if (list1)
-        {   
-            printf("%d ", list1->value);
+        {
+            if (last > list1->value)
+                printf("\e[31m%d \e[39m", list1->value);
+            else
+                printf("\e[32m%d \e[39m", list1->value);
             list1 = list1->next;
+            if (list1)
+                last = list1->value;
         }
         else
             printf("  ");
