@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/28 15:50:40 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/29 13:19:50 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ void    printstacks(t_stack a, t_stack b)
         if (list1)
         {
             if (last > list1->value)
-                printf("\e[31m%d \e[39m", list1->value);
+                printf("%d ", list1->value);
             else
-                printf("\e[32m%d \e[39m", list1->value);
+                printf("%d ", list1->value);
             list1 = list1->next;
             if (list1)
                 last = list1->value;
@@ -185,15 +185,20 @@ int     get_average(t_stack stack, int min, int max)
 {
     int     average;
     t_stacklist *tmp;
+    int         count;
 
     tmp = stack.list;
+    count = 0;
     average = 0;
     while (tmp)
     {
         if (tmp->value >= min && tmp->value <= max)
+        {
+            count++;
             average += tmp->value;
+        }
         tmp = tmp->next;
     }
-    average = (int)((float)average / (float) stack.count);
+    average = (int)((float)average / (float) count);
     return (average);
 }
