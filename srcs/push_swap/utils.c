@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/29 13:57:29 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/05/31 14:06:04 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,12 +326,18 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
     median[4] = ft_get_median(stack, median[2], median[1]);
     // idk mate kill  me pls
     // min - 0                                        smaller than  bigger than
-    stack = ft_sort_part(stack, stackb, ft_under_median, median[0],get_min(stack));
-    stack = ft_sort_part(stack, stackb, ft_under_median, median[1],median[3]);
-    stack = ft_sort_part(stack, stackb, ft_under_median, median[4],median[1]);
-    stack = ft_sort_part(stack, stackb, ft_under_median, median[2],median[4]);
-    stack = ft_sort_part(stack, stackb, ft_under_median, median[3],median[0]);
-    stack = ft_sort_part(stack, stackb, ft_under_median, get_max(stack), median[2]);
+    // stack = ft_sort_part(stack, stackb, ft_under_median, median[0],get_min(stack));
+    // stack = ft_sort_part(stack, stackb, ft_under_median, median[1],median[3]);
+    // stack = ft_sort_part(stack, stackb, ft_under_median, median[4],median[1]);
+    // stack = ft_sort_part(stack, stackb, ft_under_median, median[2],median[4]);
+    // stack = ft_sort_part(stack, stackb, ft_under_median, median[3],median[0]);
+    // stack = ft_sort_part(stack, stackb, ft_under_median, get_max(stack), median[2]);
+
+    stack = ft_sort_part(stack, stackb, ft_under_median,median[2], median[1]);
+    stack = ft_sort_part(stack, stackb, ft_under_median,median[1], median[0]);
+    stack = ft_sort_part(stack, stackb, ft_under_median,median[0], get_min(stack));
+    stack = ft_sort_part(stack, stackb, ft_under_median,get_max(stack), median[2]);
+    
     // stack = ft_sort_part(stack, stackb, ft_under_median, median[0],get_min(stack));
     // stack = ft_sort_part(stack, stackb, ft_above_median, median[0],median[1]);
     // stack = ft_sort_part(stack, stackb, ft_under_median, median[2],median[1]);
@@ -351,7 +357,8 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
 
     // stack = ft_sort_part(stack, stackb, ft_under_median, median[2],median[1]);
     // stack = ft_sort_part(stack, stackb, ft_above_median, median[2], get_max(stack));
-    printf("medians : %d %d %d %d %d", median[0], median[3], median[1], median[4], median[2]);
+    // printf("medians : %d %d %d %d %d", median[0], median[3], median[1], median[4], median[2]);
+    printf("medians : %d %d %d", median[0], median[1], median[2]);
     return (stack);
 }
 
