@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/02 14:07:31 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/02 14:59:52 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,7 @@ t_stack ft_get_to_top(t_stack stack, int pos, char a)
     return (stack);
 }
 
-t_stack ft_sort_part(t_stack stack, t_stack stackb, int (*part)(t_stack, int, int), int median, int limit)
+t_stack ft_sort_part(t_stack stack, t_stack *stackb, int (*part)(t_stack, int, int), int median, int limit)
 {
     int pos;
     int top;
@@ -290,26 +290,31 @@ t_stack ft_sort_part(t_stack stack, t_stack stackb, int (*part)(t_stack, int, in
     {
         stack = ft_get_to_top(stack, pos, 'a');
         write(1, "pb\n", 3);
-        if (stackb.count > 0)
-            top = stackb.list->value;
-        push_to(&stack, &stackb);
-        if (top < stackb.list->value && stackb.count > 1)
+        if (stackb->count > 0)
+            top = stackb->list->value;
+        push_to(&stack, stackb);
+        if (top < stackb->list->value && stackb->count > 1)
         {
-            stackb = swap(stackb);
+            *stackb = swap(*stackb);
             write (1, "sb\n", 3);
         }
         pos = part(stack, median, limit);
     }
-    while (stackb.count)
-    {
-        pos = ft_get_smallest_pos(stackb);
-        stackb = ft_get_to_top(stackb, pos, 'b');
-        push_to(&stackb, &stack);
-        write(1, "pa\n", 3);
-        stack = rotate(stack);
-        write(1, "ra\n", 3);
-    }
+    // while (stackb.count)
+    // {
+    //     pos = ft_get_smallest_pos(stackb);
+    //     stackb = ft_get_to_top(stackb, pos, 'b');
+    //     push_to(&stackb, &stack);
+    //     write(1, "pa\n", 3);
+    //     stack = rotate(stack);
+    //     write(1, "ra\n", 3);
+    // }
     return (stack);
+}
+
+t_stack ft_sort_back()
+{
+    
 }
 
 t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
@@ -335,10 +340,10 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
     // stack = ft_sort_part(stack, stackb, ft_under_median, median[3],median[0]);
     // stack = ft_sort_part(stack, stackb, ft_under_median, get_max(stack), median[2]);
 
-    stack = ft_sort_part(stack, stackb, ft_under_median,median[2], median[1]);
-    stack = ft_sort_part(stack, stackb, ft_under_median,median[1], median[0]);
-    stack = ft_sort_part(stack, stackb, ft_under_median,median[0], get_min(stack));
-    stack = ft_sort_part(stack, stackb, ft_under_median,get_max(stack), median[2]);
+    stack = ft_sort_part(stack, &stackb, ft_under_median,median[2], median[1]);
+    stack = ft_sort_part(stack, &stackb, ft_under_median,median[1], median[0]);
+    stack = ft_sort_part(stack, &stackb, ft_under_median,median[0], get_min(stack));
+    stack = ft_sort_part(stack, &stackb, ft_under_median,get_max(stack), median[2]);
     
     // stack = ft_sort_part(stack, stackb, ft_under_median, median[0],get_min(stack));
     // stack = ft_sort_part(stack, stackb, ft_above_median, median[0],median[1]);
