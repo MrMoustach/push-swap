@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/31 14:06:04 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/02 14:07:31 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,8 +295,8 @@ t_stack ft_sort_part(t_stack stack, t_stack stackb, int (*part)(t_stack, int, in
         push_to(&stack, &stackb);
         if (top < stackb.list->value && stackb.count > 1)
         {
-            stackb = rotate(stackb);
-            write (1, "rb\n", 3);
+            stackb = swap(stackb);
+            write (1, "sb\n", 3);
         }
         pos = part(stack, median, limit);
     }
@@ -316,6 +316,7 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
 {
     t_stacklist *tmp;
     int         median[10];
+    int i;
 
     tmp = stack.list;
     stackb.count = 0;
@@ -324,6 +325,7 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
     median[2] = ft_get_median(stack, get_max(stack), median[1]);
     median[3] = ft_get_median(stack, median[1], median[0]);
     median[4] = ft_get_median(stack, median[2], median[1]);
+    
     // idk mate kill  me pls
     // min - 0                                        smaller than  bigger than
     // stack = ft_sort_part(stack, stackb, ft_under_median, median[0],get_min(stack));
