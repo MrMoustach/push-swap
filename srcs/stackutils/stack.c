@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/29 13:19:50 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/03 12:39:41 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_stack    rotate(t_stack stack)
 {
    t_stacklist *tmp;
 
-   if (stack.list == NULL)
+   if (stack.list == NULL || stack.count <= 1)
         return (stack);
    tmp = stack.list;
    stack.list = stack.list->next;
