@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/06 17:06:48 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/07 12:28:56 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,7 @@ int     ft_above_median(t_stack stack, int median, int max)
 
 t_stack ft_get_to_top(t_stack stack, int pos, char a)
 {
-    if (stack.count < 1)
+    if (stack.count <  1)
         return (stack);
 
     if (stack.count / 2 >= pos)
