@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/07 12:28:56 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:46:41 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,11 +328,11 @@ t_stack ft_sort_back(t_stack stack, t_stack *stackb)
         push_to(stackb, &stack);
         write(1, "pa\n", 3);
         pos = ft_get_smallest_pos(*stackb);
-        if (stackb->count / 2 >= pos && pos)
-        {
-            pos--;
-            skip = 1;
-        }
+        // if (stackb->count / 2 >= pos && pos)
+        // {
+        //     pos--;
+        //     skip = 1;
+        // }
         if (skip == 1)
         {
             stack = rotate(stack);
@@ -386,17 +386,18 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
         stack = ft_sort_part(stack, &stackb, ft_under_median,median[2], median[1]);
         stack = ft_sort_part(stack, &stackb, ft_under_median,get_max(stack), median[2]);
         stack = ft_sort_back(stack, &stackb);
+
     }
     else if(stack.count < 500)
     {
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[0], get_min(stack));
         stack = ft_sort_part(stack, &stackb, ft_under_median, median[3], median[0]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[0], get_min(stack));
         stack = ft_sort_back(stack, &stackb);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[1], median[3]);
         stack = ft_sort_part(stack, &stackb, ft_under_median, median[4], median[1]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[1], median[3]);
         stack = ft_sort_back(stack, &stackb);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[2], median[4]);
         stack = ft_sort_part(stack, &stackb, ft_under_median, get_max(stack), median[2]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[2], median[4]);
         stack = ft_sort_back(stack, &stackb);
     }
     else
@@ -420,27 +421,29 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
         // stack = ft_sort_part(stack, &stackb, ft_under_median, get_max(stack), median[6]);
         // stack = ft_sort_back(stack, &stackb);
 
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[13], get_min(stack));
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[5], median[13]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[10], median[5]);
         stack = ft_sort_part(stack, &stackb, ft_under_median, median[0], median[10]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[10], median[5]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[5], median[13]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[13], get_min(stack));
         // stack = ft_sort_back(stack, &stackb);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[9], median[0]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[3], median[9]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[8], median[3]);
         stack = ft_sort_part(stack, &stackb, ft_under_median, median[1], median[8]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[8], median[3]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[3], median[9]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[9], median[0]);
         stack = ft_sort_back(stack, &stackb);
         
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[7], median[1]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[4], median[7]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[11], median[4]);
         stack = ft_sort_part(stack, &stackb, ft_under_median, median[2], median[11]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[11], median[4]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[4], median[7]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[7], median[1]);
         // stack = ft_sort_back(stack, &stackb);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[12], median[2]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[6], median[12]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[14], median[6]);
         stack = ft_sort_part(stack, &stackb, ft_under_median, get_max(stack), median[14]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[14], median[6]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[6], median[12]);
+        stack = ft_sort_part(stack, &stackb, ft_under_median, median[12], median[2]);
         stack = ft_sort_back(stack, &stackb);
+
+
     }
     // printf("%d %d %d %d %d %d %d", median[5],median[0], median[3], median[1], median[4], median[2], median[6]);
     return (stack);
