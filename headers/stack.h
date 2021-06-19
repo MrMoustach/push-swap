@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 11:35:47 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/31 11:11:56 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/18 12:54:01 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct  s_stack
 {
     t_stacklist      *list;
     int         count;
+    int         min;
 }               t_stack;
 
 t_stacklist			*ft_stacknew(int  content);
