@@ -47,4 +47,5 @@ t_stack     copy_stack(t_stack stack);
 int     get_min(t_stack stack); 
 int     get_max(t_stack stack);
 int     get_average(t_stack stack, int min, int max);
+int     top(t_stack stack);
 #endif

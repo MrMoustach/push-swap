@@ -459,6 +459,94 @@ t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
     return (stack);
 }
 
+int     get_index(t_stack stack, int value)
+{
+    t_stacklist *tmp;
+    int         ret;
+
+    tmp = stack.list;
+    ret = 0;
+    while (tmp)
+    {
+        if (tmp->value < value)
+            ret++;
+        tmp = tmp->next;
+    }
+    return (ret);
+}
+
+t_stack get_indicies(t_stack stack)
+{
+    t_stack indicies;
+    t_stacklist *tmp;
+
+    tmp = stack.list;
+    indicies.list = NULL;
+    indicies.count = 0;
+    while (tmp)
+    {
+        indicies = push(indicies, get_index(stack, tmp->value));
+        tmp = tmp->next;
+    }
+    return (indicies);
+}
+
+int     max_bits(int count)
+{
+    int max;
+
+    max = 0;
+    while ((count >> max) != 0)
+        max++;
+    return (max);
+}
+
+void    ft_n_radix(t_stack *stack, t_stack *stackb, int n)
+{
+    t_stacklist *tmp;
+    int         count;
+
+    tmp = stack->list;
+    count = stack->count;
+    while (count--)
+    {
+        if ((top(*stack) >> n)&1 == 1)
+        {
+            push_to(stack, stackb);
+            write (1, "pb\n", 3);
+        }
+        else
+        {
+            *stack = rotate(*stack);
+            write (1, "ra\n", 3);
+        }
+    }
+    while (stackb->count)
+    {
+        push_to(stackb, stack);
+        write (1, "pa\n", 3);
+    }
+}
+
+t_stack ft_sort_radix(t_stack stack, t_stack stackb)
+{
+    t_stack indicies;
+    t_stack indiciesb;
+    int     max;
+    int     i;
+
+    indicies = get_indicies(stack);
+    indiciesb.count = 0;
+    max = max_bits(indicies.count);
+    i = 0;
+    while (i < max)
+    {
+        ft_n_radix(&indicies, &indiciesb, i);
+        i++;
+    }
+    return (stack);
+}
+
 t_stack ft_sort(t_stack stack, t_stack stackb)
 {
     if (ft_is_stack_sorted(stack))
@@ -468,6 +556,6 @@ t_stack ft_sort(t_stack stack, t_stack stackb)
     else if (stack.count <= 5)
         return (ft_sort_five(stack, stackb));
     else
-        return (ft_sort_all_median(stack, stackb));
+        return (ft_sort_radix(stack, stackb));
     return (stack);
 }

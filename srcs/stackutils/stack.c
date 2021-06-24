@@ -202,3 +202,8 @@ int     get_average(t_stack stack, int min, int max)
     average = (int)((float)average / (float) count);
     return (average);
 }
+
+int     top(t_stack stack)
+{
+    return (stack.list->value);
+}
