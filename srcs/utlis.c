@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 12:28:57 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/28 12:30:03 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/25 21:26:14 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,30 @@ int ft_is_number(char *s)
     return (1);
 }
 
+int test_duplicates(char **av)
+{
+    int i;
+    int j;
+    int len;
+    
+    i = 0;
+    while (av[i])
+    {
+        j = 0;
+        while (av[j])
+        {
+            len = ft_strlen(av[j]);
+            if (ft_strlen(av[i]) > len)
+                len = ft_strlen(av[i]);
+            if (!ft_strncmp(av[i], av[j], len) && i != j)
+                return 1;
+            j++;
+        }
+        i++;
+    }
+    return (0);
+}
+
 t_stack load_stack(char *av[],int ac, int *flag)
 {
     t_stack a;
@@ -44,7 +68,8 @@ t_stack load_stack(char *av[],int ac, int *flag)
     a.list = NULL;
     *flag = 0;
     i = ac;
-    while (av[--i] > 0)
+    *flag = test_duplicates(av);
+    while (--i > 0 && !*flag)
     {
         if (!ft_is_number(av[i]))
         {

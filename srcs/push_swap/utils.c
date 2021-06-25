@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/25 16:47:53 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/25 21:31:43 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,23 +145,6 @@ int     get_index(t_stack stack, int value)
     return (ret);
 }
 
-t_stack get_indicies(t_stack stack)
-{
-    t_stack indicies;
-    t_stacklist *tmp;
-
-    tmp = stack.list;
-    indicies.list = NULL;
-    indicies.count = 0;
-    while (tmp)
-    {
-        indicies = push(indicies, get_index(stack, tmp->value));
-        indicies = rotate(indicies);
-        tmp = tmp->next;
-    }
-    return (indicies);
-}
-
 int     max_bits(int count)
 {
     int max;
@@ -211,10 +194,7 @@ t_stack ft_sort_radix(t_stack stack, t_stack stackb)
     stackb.count = 0;
     stackb.list = NULL;
     while (i < max)
-    {
-        ft_n_radix(&stack, &stackb, i);
-        i++;
-    }
+        ft_n_radix(&stack, &stackb, i++);
     return (stack);
 }
 

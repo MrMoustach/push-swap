@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:07:24 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/28 12:36:31 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/25 21:30:34 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ int main(int ac, char *av[])
 	t_stack	b;
     
 	if (ac == 1)
-	{
-		write (1, "Error\n", 6);   
-		return (0);
-	}
+		return (1);
 	a = load_stack(av, ac, &flag);
-	// printstacks(a, b);
+	if (flag)
+	{
+		write (2, "Error\n", 6);   
+		return (1);
+	}
     a = ft_sort(a, b);
-	// printstacks(a, b);
+	return (0);
 }
