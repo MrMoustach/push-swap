@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/18 13:17:59 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/25 13:44:48 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -510,7 +510,7 @@ void    ft_n_radix(t_stack *stack, t_stack *stackb, int n)
     count = stack->count;
     while (count--)
     {
-        if ((top(*stack) >> n)&1 == 1)
+        if (((top(*stack) >> n) & 1) == 1)
         {
             push_to(stack, stackb);
             write (1, "pb\n", 3);

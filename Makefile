@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/06/15 13:42:00 by iharchi          ###   ########.fr        #
+#    Updated: 2021/06/25 13:48:48 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,14 @@ FLAG = -Wall -Werror -Wextra
 
 all: $(NAME)
 $(NAME) : 
+			@echo "\033[0;33mMaking LIBFT"
+			@$(MAKE) -C libft/
 			@gcc push_swap.c -g $(SRC_UTILS) $(PS_SRC) $(SRC) $(LIBFT)  -o $(NAME)
 clean:
 	@/bin/rm -f $(OBJECT) $(BONUS_OBJECT)
 
 fclean: clean
+	@$(MAKE) -C libft/ fclean
 	@/bin/rm -f $(NAME) $(CHECKER)
 
 bonus:
