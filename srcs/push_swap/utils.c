@@ -525,6 +525,8 @@ void    ft_n_radix(t_stack *stack, t_stack *stackb, int n)
     {
         push_to(stackb, stack);
         write (1, "pa\n", 3);
+        // *stack = rotate(*stack);
+        // write (1, "ra\n", 3);
     }
 }
 
@@ -544,6 +546,14 @@ t_stack ft_sort_radix(t_stack stack, t_stack stackb)
         ft_n_radix(&indicies, &indiciesb, i);
         i++;
     }
+    // i = 0;
+    // while (i < indicies.count)
+    // {
+    //     write (1, "ra\n", 3);
+    //     indicies = rotate(indicies);
+    //     i++;
+    // }
+    printstacks(indicies, indiciesb);
     return (stack);
 }
 
