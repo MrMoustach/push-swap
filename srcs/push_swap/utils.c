@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/25 16:20:57 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:47:53 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ t_stack put_lowest_top(t_stack stack)
     }
     return (stack);
 }
-// TODO : change to highest 2 to b
+
 t_stack ft_sort_five(t_stack stack, t_stack stackb)
 {
     stackb.count = 0;
@@ -127,337 +127,7 @@ t_stack ft_sort_five(t_stack stack, t_stack stackb)
     }
     return (stack);
 }
-// TODO : useless
-t_stack ft_sort_all(t_stack stack, t_stack stackb)
-{
-    stackb.count = 0;
-    while (stack.count != 3)
-    {
-        stack = put_lowest_top(stack);
-        push_to(&stack, &stackb);
-        write (1, "pb\n", 3);
-    }
-    stack = ft_sort_three(stack);
-    while (stackb.count != 0)
-    {
-        push_to(&stackb, &stack);
-        write (1, "pa\n", 3);
-    }
-    return (stack);
-}
 
-int     ft_get_median(t_stack stack, int min, int max)
-{
-    int average;
-    t_stacklist *tmp;
-    
-    average = get_average(stack, max, min);
-    tmp = stack.list;
-    while (tmp)
-    {
-        if (tmp->value == average)
-            return (tmp->value);
-        if (tmp->value < min && tmp->value > average)
-            min = tmp->value;
-        if (tmp->value > max && tmp->value < average)
-            max = tmp->value;
-        tmp = tmp->next;
-    }
-    if (average - min < max - average)
-        return (min);
-    else
-        return (max);
-}
-
-int     ft_under_median(t_stack stack, int median, int min, int first)
-{
-    t_stacklist *tmp;
-    int         top;
-    int         bot;
-    int         i;
-    int         flag;
-
-    tmp = stack.list;
-    top = 0;
-    bot = 0;
-    i = 0;
-    flag = 0;
-    while (tmp)
-    {
-        if ((tmp->value <= median && tmp->value >= min && first) || (tmp->value <= median && tmp->value > min && !first))
-        {
-            top = i;
-            flag = 1;
-            break ;
-        }
-        i++;
-        tmp = tmp->next;
-    }
-    i = 0;
-    tmp = stack.list;
-    while (tmp)
-    {
-        if ((tmp->value <= median && tmp->value >= min && first) || (tmp->value <= median && tmp->value > min && !first))
-            bot = i;
-        i++;
-        tmp = tmp->next;
-    }
-    if (flag)
-    {
-        if (top < stack.count - bot)
-            return (top);
-        else
-            return (bot);
-    }
-    return (-1);
-}
-
-int     ft_above_median(t_stack stack, int median, int max)
-{
-    t_stacklist *tmp;
-    int         top;
-    int         bot;
-    int         i;
-    int         flag;
-
-    tmp = stack.list;
-    top = 0;
-    bot = 0;
-    i = 0;
-    flag = 0;
-    while (tmp)
-    {
-        if (tmp->value >= median && tmp->value >= max)
-        {
-            flag = 1;
-            break ;
-        }
-        top++;
-        tmp = tmp->next;
-    }
-    tmp = stack.list;
-    while (tmp)
-    {
-        if (tmp->value <= median && tmp->value >= max)
-            bot = i;
-        i++;
-        tmp = tmp->next;
-    }
-    if (flag)
-    {
-        if (top < (stack.count - bot) - 1)
-            return (top);
-        else
-            return (bot);
-    }
-    return (-1);
-}
-
-t_stack ft_get_to_top(t_stack stack, int pos, char a)
-{
-    if (stack.count <  1)
-        return (stack);
-
-    if (stack.count / 2 >= pos)
-    {
-        while(pos--)
-        {
-            stack = rotate(stack);
-            if (a == 'a')
-                write (1, "ra\n", 3);
-            else
-                write (1, "rb\n", 3);
-        }
-    }
-    else
-    {
-        while (pos++ < stack.count)
-        {
-            stack = reverse_rotate(stack);
-            if (a == 'a')
-                write (1, "rra\n", 4);
-            else
-                write (1, "rrb\n", 4);
-        }
-    }
-    return (stack);
-}
-
-t_stack ft_sort_part(t_stack stack, t_stack *stackb, int (*part)(t_stack, int, int, int), int median, int limit)
-{
-    int pos;
-    int top;
-    
-    
-    pos = part(stack, median, limit, (limit == get_min(stack)));
-    while (pos >= 0)
-    {
-        stack = ft_get_to_top(stack, pos, 'a');
-        write(1, "pb\n", 3);
-        if (stackb->count > 0)
-            top = stackb->list->value;
-        push_to(&stack, stackb);
-        if (top < stackb->list->value && stackb->count > 1)
-        {
-            *stackb = swap(*stackb);
-            write (1, "sb\n", 3);
-        }
-        pos = part(stack, median, limit, (limit == get_min(stack)));
-    }
-    // while (stackb.count)
-    // {
-    //     pos = ft_get_smallest_pos(stackb);
-    //     stackb = ft_get_to_top(stackb, pos, 'b');
-    //     push_to(&stackb, &stack);
-    //     write(1, "pa\n", 3);
-    //     stack = rotate(stack);
-    //     write(1, "ra\n", 3);
-    // }
-    return (stack);
-}
-
-t_stack ft_sort_back(t_stack stack, t_stack *stackb)
-{
-    int pos;
-    int skip;
-
-    // pos = ft_get_smallest_pos(*stackb);
-    while (stackb->count)
-    {
-        skip = 0;
-        pos = ft_get_smallest_pos(*stackb);
-        *stackb = ft_get_to_top(*stackb, pos, 'b');
-        push_to(stackb, &stack);
-        write(1, "pa\n", 3);
-        // if (stackb->count / 2 >= pos && pos)
-        // {
-        //     pos--;
-        //     skip = 1;
-        // }
-        // if (skip == 1)
-        // {
-        //     stack = rotate(stack);
-        //     *stackb = rotate(*stackb);
-        //     write(1, "rr\n", 3);
-        // }
-        // else
-        // {
-        // }
-            stack = rotate(stack);
-            write(1, "ra\n", 3);
-    }
-    stackb->list = NULL;
-    return (stack);
-}
-
-t_stack ft_sort_all_median(t_stack stack, t_stack stackb)
-{
-    t_stacklist *tmp;
-    int         median[15];
-    int i;
-
-    tmp = stack.list;
-    stackb.count = 0;
-    stackb.list = NULL;
-    stack.min = get_min(stack);
-    median[1] = ft_get_median(stack, get_max(stack), get_min(stack));
-    median[0] = ft_get_median(stack, median[1], get_min(stack));
-    median[2] = ft_get_median(stack, get_max(stack), median[1]);
-    median[3] = ft_get_median(stack, median[1], median[0]);
-    median[4] = ft_get_median(stack, median[2], median[1]);
-    median[5] = ft_get_median(stack, median[0], get_min(stack));
-    median[6] = ft_get_median(stack, get_max(stack), median[2]);
-    
-    median[7] = ft_get_median(stack, median[4], median[1]);
-    median[8] = ft_get_median(stack, median[1], median[3]);
-    
-    median[9] = ft_get_median(stack, median[3], median[0]);
-    median[10] = ft_get_median(stack, median[0], median[5]);
-    
-    median[11] = ft_get_median(stack, median[2], median[4]);
-    median[12] = ft_get_median(stack, median[6], median[2]);
-
-    median[13] = ft_get_median(stack, median[5], get_min(stack));
-    median[14] = ft_get_median(stack, get_max(stack), median[6]);
-    
-    if (stack.count < 250)
-    {
-        stack = ft_sort_part(stack, &stackb, ft_under_median,median[0], get_min(stack));
-        stack = ft_sort_part(stack, &stackb, ft_under_median,median[1], median[0]);
-        stack = ft_sort_back(stack, &stackb);
-        if (ft_is_stack_sorted(stack))
-            return (stack);
-        stack = ft_sort_part(stack, &stackb, ft_under_median,median[2], median[1]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median,get_max(stack), median[2]);
-        stack = ft_sort_back(stack, &stackb);
-
-    }
-    else if(stack.count < 500)
-    {
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[3], median[0]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[0], get_min(stack));
-        stack = ft_sort_back(stack, &stackb);
-        if (ft_is_stack_sorted(stack))
-            return (stack);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[4], median[1]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[1], median[3]);
-        stack = ft_sort_back(stack, &stackb);
-        if (ft_is_stack_sorted(stack))
-            return (stack);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, get_max(stack), median[2]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[2], median[4]);
-        stack = ft_sort_back(stack, &stackb);
-    }
-    else
-    {
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[5], get_min(stack));
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[0], median[5]);
-        // // stack = ft_sort_back(stack, &stackb);
-        
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[3], median[0]);
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[8], median[3]);
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[1], median[8]);
-        
-        // stack = ft_sort_back(stack, &stackb);
-
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[7], median[1]);
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[4], median[7]);
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[2], median[4]);
-        // // stack = ft_sort_back(stack, &stackb);
-
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, median[6], median[2]);
-        // stack = ft_sort_part(stack, &stackb, ft_under_median, get_max(stack), median[6]);
-        // stack = ft_sort_back(stack, &stackb);
-
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[0], median[10]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[10], median[5]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[5], median[13]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[13], get_min(stack));
-        // stack = ft_sort_back(stack, &stackb);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[1], median[8]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[8], median[3]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[3], median[9]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[9], median[0]);
-        stack = ft_sort_back(stack, &stackb);
-        if (ft_is_stack_sorted(stack))
-            return (stack);
-        
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[2], median[11]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[11], median[4]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[4], median[7]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[7], median[1]);
-        // stack = ft_sort_back(stack, &stackb);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, get_max(stack), median[14]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[14], median[6]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[6], median[12]);
-        stack = ft_sort_part(stack, &stackb, ft_under_median, median[12], median[2]);
-        stack = ft_sort_back(stack, &stackb);
-
-
-    }
-    // printf("%d %d %d %d %d %d %d", median[5],median[0], median[3], median[1], median[4], median[2], median[6]);
-    return (stack);
-}
 
 int     get_index(t_stack stack, int value)
 {
@@ -506,12 +176,14 @@ void    ft_n_radix(t_stack *stack, t_stack *stackb, int n)
 {
     t_stacklist *tmp;
     int         count;
+    t_stack     copy;
 
     tmp = stack->list;
     count = stack->count;
+    copy = copy_stack(*stack);
     while (count--)
     {
-        if (((top(*stack) >> n) & 1) == 1)
+        if (((get_index(copy ,top(*stack)) >> n) & 1) == 1)
         {
             push_to(stack, stackb);
             write (1, "pb\n", 3);
@@ -526,35 +198,21 @@ void    ft_n_radix(t_stack *stack, t_stack *stackb, int n)
     {
         push_to(stackb, stack);
         write (1, "pa\n", 3);
-        // *stack = rotate(*stack);
-        // write (1, "ra\n", 3);
     }
 }
 
 t_stack ft_sort_radix(t_stack stack, t_stack stackb)
 {
-    t_stack indicies;
-    t_stack indiciesb;
     int     max;
     int     i;
 
-    indicies = get_indicies(stack);
-    indiciesb.list = NULL;
-    indiciesb.count = 0;
-    max = max_bits(indicies.count);
+    max = max_bits(stack.count);
     i = 0;
-    // printstacks(indicies, stack);
-    
+    stackb.count = 0;
+    stackb.list = NULL;
     while (i < max)
     {
-        ft_n_radix(&indicies, &indiciesb, i);
-        i++;
-    }
-    i = 0;
-    while (i < indicies.count)
-    {
-        write (1, "ra\n", 3);
-        indicies = rotate(indicies);
+        ft_n_radix(&stack, &stackb, i);
         i++;
     }
     return (stack);
