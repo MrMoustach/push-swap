@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 09:59:49 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/03 12:39:41 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 16:41:37 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ t_stack    swap(t_stack stack)
 {
     int         tmp;
     t_stacklist *second;
-    int         i;
 
     if (ft_stackisempty(stack))
         return (stack);
@@ -78,6 +77,8 @@ t_stack     reverse_rotate(t_stack stack)
     t_stacklist *tmp;
     t_stacklist *second_to_last;
 
+    if (stack.count < 2)
+        return (stack);
     second_to_last = stack.list;
     while (second_to_last->next->next)
         second_to_last = second_to_last->next;
