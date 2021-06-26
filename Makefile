@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/06/26 20:36:12 by iharchi          ###   ########.fr        #
+#    Updated: 2021/06/26 20:51:07 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ PS = push_swap
 SRC_UTILS	= srcs/stackutils/stacklist_helpers.c srcs/stackutils/stacklist.c srcs/stackutils/stack_helpers.c srcs/stackutils/stack.c
 PS_SRC		= srcs/push_swap/utils_helper2.c srcs/push_swap/utils.c srcs/push_swap/utils_helper.c
 SRC			= srcs/ft_atol.c srcs/utlis.c
-GNL			= gnl/get_next_line.c gnl/get_next_line_utils.c 
+GNL			= get_next_line/get_next_line.c get_next_line/get_next_line_utils.c 
 LIBFT		= libft/libft.a
 FLAG		= -Wall -Werror -Wextra
 
