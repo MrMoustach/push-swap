@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:30:39 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/23 17:12:08 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:28:12 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (!alst)
 		return ;

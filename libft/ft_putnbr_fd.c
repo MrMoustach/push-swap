@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 22:18:26 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/16 20:01:54 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:32:05 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned	int	tmp;
+	unsigned int	tmp;
 	char			wtmp;
 
 	tmp = n;

@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:43:09 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/20 17:20:50 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:42:12 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef	struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;

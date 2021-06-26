@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:47:08 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/18 06:43:48 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:28:41 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (lst && f)
 	{

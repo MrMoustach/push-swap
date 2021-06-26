@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/06/26 16:04:43 by iharchi          ###   ########.fr        #
+#    Updated: 2021/06/26 16:37:58 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME) :
 			@echo "\033[0;33mMaking LIBFT"
 			@$(MAKE) -C libft/
 			@$(MAKE) -C libft/ clean
-			@gcc push_swap.c -g $(SRC_UTILS) $(PS_SRC) $(SRC) $(LIBFT)  -o $(NAME)
+			@gcc push_swap.c -g $(SRC_UTILS) $(PS_SRC) $(SRC) $(LIBFT) $(FLAG)  -o $(NAME)
 clean:
 	@/bin/rm -f $(OBJECT) $(BONUS_OBJECT)
 
@@ -37,6 +37,6 @@ fclean: clean
 	@/bin/rm -f $(NAME) $(CHECKER)
 
 bonus:
-	@gcc checker.c -g $(CH_SRC) $(SRC_UTILS) $(SRC) $(GNL) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
+	@gcc checker.c -g $(CH_SRC) $(SRC_UTILS) $(SRC) $(GNL) $(FLAG) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
 
 re : fclean all

@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 11:52:52 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/22 18:33:31 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:39:36 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char		*tmp;
+	char	*tmp;
 
 	tmp = NULL;
 	while (*s != '\0')
@@ -24,6 +24,6 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	}
 	if (c == '\0')
-		return (char *)s;
+		return ((char *)s);
 	return (tmp);
 }

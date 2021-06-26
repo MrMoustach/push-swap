@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:00:52 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/25 17:25:02 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:38:57 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *str, const char *needle, size_t n)
 	i = 0;
 	j = 0;
 	if (*needle == '\0' || needle == NULL || (!str && !n))
-		return (char *)str;
+		return ((char *)str);
 	while (str[i] && i < n)
 	{
 		j = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iharchi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 19:27:43 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/11 16:32:25 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:31:00 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*ft_memccpy(void *d, void const *s, int c, size_t n)
 {
-	unsigned	int		i;
-	unsigned	char	*temp1;
-	unsigned	char	*temp2;
-	unsigned	char	p;
+	unsigned int	i;
+	unsigned char	*temp1;
+	unsigned char	*temp2;
+	unsigned char	p;
 
 	i = 0;
 	temp1 = (unsigned char *)d;

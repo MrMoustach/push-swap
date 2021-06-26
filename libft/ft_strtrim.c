@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 19:29:47 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/22 18:34:54 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:41:11 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	int	findset(char c, char const *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		slen;
 	int		srt;
@@ -41,7 +41,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 		end++;
 	if ((srt + end) >= slen)
 	{
-		if (!(p = (char *)malloc(1)))
+		p = (char *)malloc(1);
+		if (!p)
 			return (NULL);
 		*p = '\0';
 		return (p);

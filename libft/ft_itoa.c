@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 16:10:01 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/15 21:38:17 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:27:10 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	char	*zero(void)
 	return (ret);
 }
 
-static	int		calculate(unsigned int n)
+static	int	calculate(unsigned int n)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ static	int		calculate(unsigned int n)
 	return (i);
 }
 
-static	int		det_n(unsigned int *tmp, int n)
+static	int	det_n(unsigned int *tmp, int n)
 {
 	if (n < 0)
 	{
@@ -46,11 +46,11 @@ static	int		det_n(unsigned int *tmp, int n)
 	return (0);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int				len;
 	int				signe;
-	unsigned	int	tmp;
+	unsigned int	tmp;
 	char			*ret;
 
 	len = 0;
@@ -61,8 +61,7 @@ char			*ft_itoa(int n)
 	else
 		signe = det_n(&tmp, n);
 	len = calculate(tmp);
-	if (!(ret = (char *)malloc(len + signe + 1)))
-		return (NULL);
+	ret = (char *)malloc(len + signe + 1);
 	*(ret + len-- + signe) = '\0';
 	while (tmp > 0)
 	{

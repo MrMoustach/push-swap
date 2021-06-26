@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 11:42:23 by iharchi           #+#    #+#             */
-/*   Updated: 2019/10/25 20:09:25 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:37:46 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned	int		lendst;
-	unsigned	int		lensrc;
+	unsigned int		lendst;
+	unsigned int		lensrc;
 	int					i;
 
 	i = -1;
