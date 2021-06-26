@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/06/26 20:13:10 by iharchi          ###   ########.fr        #
+#    Updated: 2021/06/26 20:36:12 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,6 @@ fclean: clean
 
 bonus:
 			@echo "\033[0;33mMaking CHECKER"
-			@gcc checker.c $(CH_SRC) $(SRC_UTILS) $(SRC) $(GNL) $(FLAG) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
+			@gcc checker_bonus.c $(CH_SRC) $(SRC_UTILS) $(SRC) $(GNL) $(FLAG) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
 
 re : fclean all
