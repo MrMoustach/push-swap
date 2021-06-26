@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 11:36:40 by iharchi           #+#    #+#             */
-/*   Updated: 2021/05/28 12:30:36 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 16:24:54 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
-#include "../gnl/get_next_line.h"
+# include "../gnl/get_next_line.h"
 # include "stack.h"
 # include "dev.h"
+#define MAX_INT 2147483647
+#define MIN_INT -2147483648
 
 int ft_is_number(char *s);
 int ft_get_smallest_pos(t_stack stack);
 t_stack ft_sort(t_stack stack, t_stack stackb);
 t_stack load_stack(char *av[],int ac, int *flag);
+long long	ft_atol(const char *str);
 #endif

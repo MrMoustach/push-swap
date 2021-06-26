@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 12:28:57 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/25 21:26:14 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 16:26:11 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ int test_duplicates(char **av)
 
 t_stack load_stack(char *av[],int ac, int *flag)
 {
-    t_stack a;
-    int     i;
+    t_stack     a;
+    int         i;
+    long long   n;
 
     a.list = NULL;
     *flag = 0;
@@ -76,7 +77,13 @@ t_stack load_stack(char *av[],int ac, int *flag)
             *flag = 1;
             break ;
         }
-        a = push(a, ft_atoi(av[i]));
+        n = ft_atol(av[i]);
+        if (n > MAX_INT || n < MIN_INT || ft_strlen(av[i]) > 13)
+        {
+            *flag = 1;
+            break ;
+        }
+        a = push(a, n);
     }
     a.count = ac - 1;
     return (a);
