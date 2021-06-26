@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 03:29:15 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/26 17:36:31 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:52:24 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@ static int	ft_word(char const *str, int i, int *nbword, int c)
 	while (str[i] != c && str[i] != '\0')
 		i++;
 	return (i);
-}
-
-static	void	ft_free(char **tab, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i > n)
-		free(tab[i++]);
-	free(tab);
-	tab = NULL;
 }
 
 static int	ft_add_word(char **tab, char const *str, int *nbword, int c)
@@ -75,7 +64,7 @@ char	**ft_split(char const *str, char c)
 			i = ft_word(str, i, &number_words, c);
 	else
 		i++;
-	(char **)malloc((number_words + 1) * sizeof(char *));
+	tab = (char **)malloc((number_words + 1) * sizeof(char *));
 	tab[number_words] = 0;
 	reset(&i, &number_words);
 	while (str[i] != '\0')

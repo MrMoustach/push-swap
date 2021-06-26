@@ -6,15 +6,15 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 12:28:57 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/26 17:44:09 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:47:44 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-int ft_is_number(char *s)
+int	ft_is_number(char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return (0);
@@ -31,17 +31,17 @@ int ft_is_number(char *s)
 	{
 		if (!ft_isdigit(s[i]))
 			return (0);
-			i++;
+		i++;
 	}
 	return (1);
 }
 
-int test_duplicates(char **av)
+int	test_duplicates(char **av)
 {
-	int i;
-	int j;
-	int len;
-	
+	int	i;
+	int	j;
+	int	len;
+
 	i = 0;
 	while (av[i])
 	{
@@ -52,7 +52,7 @@ int test_duplicates(char **av)
 			if (ft_strlen(av[i]) > (size_t)len)
 				len = ft_strlen(av[i]);
 			if (!ft_strncmp(av[i], av[j], len) && i != j)
-				return 1;
+				return (1);
 			j++;
 		}
 		i++;
@@ -60,11 +60,11 @@ int test_duplicates(char **av)
 	return (0);
 }
 
-t_stack load_stack(char *av[],int ac, int *flag)
+t_stack	load_stack(char *av[], int ac, int *flag)
 {
-	t_stack     a;
-	int         i;
-	long long   n;
+	t_stack		a;
+	int			i;
+	long long	n;
 
 	a.list = NULL;
 	*flag = 0;

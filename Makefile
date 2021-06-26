@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/06/26 16:37:58 by iharchi          ###   ########.fr        #
+#    Updated: 2021/06/26 18:10:30 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME) :
 			@echo "\033[0;33mMaking LIBFT"
 			@$(MAKE) -C libft/
 			@$(MAKE) -C libft/ clean
-			@gcc push_swap.c -g $(SRC_UTILS) $(PS_SRC) $(SRC) $(LIBFT) $(FLAG)  -o $(NAME)
+			@gcc push_swap.c -g  $(SRC_UTILS) $(PS_SRC) $(SRC) $(LIBFT) $(FLAG)  -o $(NAME)
 clean:
 	@/bin/rm -f $(OBJECT) $(BONUS_OBJECT)
 

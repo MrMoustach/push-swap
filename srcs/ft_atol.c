@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 16:23:56 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/26 17:43:48 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/26 17:54:16 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ long long	ft_atol(const char *str)
 			signe = -1;
 	}
 	while (str[i] >= '0' && (str[i] <= '9') && str[i] != '\0')
-	{
 		n = (n * 10) + (str[i++] - '0');
-	}
 	return (n * signe);
 }
