@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:06:30 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/26 18:39:28 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/27 14:54:13 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ t_stack	ft_sort_three(t_stack stack)
 	{
 		stack = swap(stack);
 		write (1, "sa\n", 3);
-		stack = rotate(stack);
-		write (1, "ra\n", 4);
+		if (!ft_is_stack_sorted(stack))
+		{
+			stack = rotate(stack);
+			write (1, "ra\n", 3);
+		}
 	}
 	else if (min_pos == 1)
 		ft_sort_three_helper(&stack, &tmp);
@@ -36,6 +39,8 @@ t_stack	ft_sort_three(t_stack stack)
 
 t_stack	ft_sort_five(t_stack stack, t_stack stackb)
 {
+	int	i;
+
 	stackb.count = 0;
 	while (stack.count != 3)
 	{
@@ -43,9 +48,11 @@ t_stack	ft_sort_five(t_stack stack, t_stack stackb)
 		push_to(&stack, &stackb);
 		write (1, "pb\n", 3);
 	}
-	stack = ft_sort_three(stack);
+	if (!ft_is_stack_sorted(stack))
+		stack = ft_sort_three(stack);
 	while (stack.count != 5 && stackb.count > 0)
 	{
+		i = 0;
 		push_to(&stackb, &stack);
 		write (1, "pa\n", 3);
 	}

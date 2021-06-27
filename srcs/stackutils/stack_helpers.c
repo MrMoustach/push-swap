@@ -6,7 +6,7 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:56:32 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/26 19:57:46 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/27 14:40:51 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_stack	copy_stack(t_stack stack)
 		ft_stackadd_back(&ret.list, ft_stacknew(tmp->value));
 		tmp = tmp->next;
 	}
+	ret.count = stack.count;
 	return (ret);
 }
 
