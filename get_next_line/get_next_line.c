@@ -16,13 +16,9 @@
 
 static	char	*ft_joinbuff(char **line, char **buff)
 {
-	int		i;
 	int		size;
 	char	*ret;
-	int		j;
 
-	i = 0;
-	j = 0;
 	size = ft_strlen(*buff);
 	if (*line)
 		size += ft_strlen(*line);

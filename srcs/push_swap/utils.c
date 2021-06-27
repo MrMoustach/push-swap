@@ -39,8 +39,6 @@ t_stack	ft_sort_three(t_stack stack)
 
 t_stack	ft_sort_five(t_stack stack, t_stack stackb)
 {
-	int	i;
-
 	stackb.count = 0;
 	while (stack.count != 3)
 	{
@@ -52,7 +50,6 @@ t_stack	ft_sort_five(t_stack stack, t_stack stackb)
 		stack = ft_sort_three(stack);
 	while (stack.count != 5 && stackb.count > 0)
 	{
-		i = 0;
 		push_to(&stackb, &stack);
 		write (1, "pa\n", 3);
 	}

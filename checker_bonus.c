@@ -85,7 +85,7 @@ int	main(int ac, char *av[])
 	b.count = 0;
 	if (flag != 0)
 	{
-		write (2, "error\n", 41);
+		write (2, "error\n", 7);
 		return (1);
 	}
 	while (1)
