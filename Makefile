@@ -6,14 +6,13 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/06/26 20:51:07 by iharchi          ###   ########.fr        #
+#    Updated: 2021/06/27 08:57:50 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-
+NAME 	= push_swap
 CHECKER = checker
-PS = push_swap
+PS 		= push_swap
 
 SRC_UTILS	= srcs/stackutils/stacklist_helpers.c srcs/stackutils/stacklist.c srcs/stackutils/stack_helpers.c srcs/stackutils/stack.c
 PS_SRC		= srcs/push_swap/utils_helper2.c srcs/push_swap/utils.c srcs/push_swap/utils_helper.c
