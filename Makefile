@@ -6,7 +6,7 @@
 #    By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:24:43 by iharchi           #+#    #+#              #
-#    Updated: 2021/06/27 08:57:50 by iharchi          ###   ########.fr        #
+#    Updated: 2021/06/30 13:46:24 by iharchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ FLAG		= -Wall -Werror -Wextra
 
 all: $(NAME)
 $(NAME) : 
-			@echo "\033[0;33mMaking LIBFT"
+			@echo "\033[0;33mMaking LIBFT\033[0m"
 			@$(MAKE) -C libft/
 			@$(MAKE) -C libft/ clean
-			@echo "\033[0;33mMaking PUSH_SWAP"
+			@echo "\033[0;33mMaking PUSH_SWAP\033[0m"
 			@gcc push_swap.c $(SRC_UTILS) $(PS_SRC) $(SRC) $(LIBFT) $(FLAG)  -o $(NAME)
 clean:
 			@/bin/rm -f $(OBJECT) $(BONUS_OBJECT)
@@ -36,7 +36,7 @@ fclean: clean
 			@/bin/rm -f $(NAME) $(CHECKER)
 
 bonus:
-			@echo "\033[0;33mMaking CHECKER"
+			@echo "\033[0;33mMaking CHECKER\033[0m"
 			@gcc checker_bonus.c $(CH_SRC) $(SRC_UTILS) $(SRC) $(GNL) $(FLAG) -D BUFFER_SIZE=32 $(LIBFT) -o $(CHECKER)
 
 re : fclean all
