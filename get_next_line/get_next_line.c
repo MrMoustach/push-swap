@@ -6,12 +6,11 @@
 /*   By: iharchi <iharchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 15:22:24 by iharchi           #+#    #+#             */
-/*   Updated: 2021/06/26 17:20:28 by iharchi          ###   ########.fr       */
+/*   Updated: 2021/06/30 13:56:25 by iharchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 #include <fcntl.h>
 
 static	char	*ft_joinbuff(char **line, char **buff)
